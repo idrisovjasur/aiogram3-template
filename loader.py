@@ -11,4 +11,4 @@ bot = Bot(token = config.BOT_TOKEN, default = DefaultBotProperties(parse_mode=Pa
 storage = MemoryStorage()
 dp = Dispatcher(storage = storage, fsm = FSMStrategy.CHAT, events_isolation = None)
 dp.message.middleware(ManualThrottlingMiddleware())
-db = Database()
+db = Database(path_to_db="data/main.db")
