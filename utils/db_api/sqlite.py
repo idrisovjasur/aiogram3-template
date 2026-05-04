@@ -32,8 +32,7 @@ class Database:
         CREATE TABLE Users (
             id int NOT NULL UNIQUE,
             Name varchar(255) NOT NULL,
-            phone varchar(255) NOT NULL,
-            email varchar(255) NOT NULL
+            username varchar(255) NOT NULL
             );
 """
         self.execute(sql, commit=True)
@@ -46,13 +45,13 @@ class Database:
         ])
         return sql, tuple(parameters.values())
 
-    def add_user(self, id: int, name: str, phone: str, email: str):
+    def add_user(self, id: int, name: str, username: str):
         # SQL_EXAMPLE = "INSERT INTO Users(id, Name, phone) VALUES(1, 'John', 'phone')"
 
         sql = """
-        INSERT INTO Users(id, Name, phone, email) VALUES(?, ?, ?, ?)
+        INSERT INTO Users(id, Name, username) VALUES(?, ?, ?)
         """
-        self.execute(sql, parameters=(id, name, phone, email), commit=True)
+        self.execute(sql, parameters=(id, name, username), commit=True)
 
 
     def select_all_users(self):
